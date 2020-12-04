@@ -14,7 +14,7 @@ custom:
   config: ${file(./.gcloud/keyfile.json)}
   bucket: ${file(./config.google.json)}
 
-frameworkVersion: '2'
+frameworkVersion: "2"
 
 package:
   exclude:
@@ -27,6 +27,12 @@ functions:
     handler: handler
     events:
       - http: GET
+  backgroundFunction:
+    handler: helloGCS
+    events:
+      - event:
+          eventType: google.storage.object.finalize
+          resource: projects/${self:custom.config.project_id}/buckets/${self:custom.bucket.bucketName}
 
 plugins:
   - serverless-google-cloudfunctions
