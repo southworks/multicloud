@@ -4,8 +4,5 @@ node_modules/
 # Coverage directory used by tools like istanbul
 coverage
 
-# lib folder
-lib
-
 ### VisualStudioCode ###
 .vscode/*
